@@ -1,5 +1,7 @@
 var assert = require("assert");
 var capeTownTrips = require('../capeTownTrips');
+var minimum = require('../minimum');
+
 
 var capeTownTaxis = [
   {
@@ -42,6 +44,13 @@ describe("Cape Town Taxis", function(){
 
     assert.equal(capeTrips, 54);
   });
-  
+
+
+  it("should find the lowest number of trips that any taxi in Cape Town made", function() {
+
+    var min = minimum(capeTownTaxis);
+
+    assert.equal(min, 9);
+  });
 
 });
