@@ -53,4 +53,12 @@ describe("Cape Town Taxis", function(){
     assert.equal(min, 9);
   });
 
+
+  // it("should find the lowest number of trips that any taxi in Cape Town made", function() {
+  //
+  //   var min = minimum(capeTownTaxis);
+  //
+  //   assert.equal(min, 9);
+  // });
+
 });
