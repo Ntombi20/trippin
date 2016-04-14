@@ -1,6 +1,8 @@
 var assert = require("assert");
 var capeTownTrips = require('../capeTownTrips');
 var minimum = require('../minimum');
+var records = require('../records');
+
 
 
 var capeTownTaxis = [
@@ -54,11 +56,25 @@ describe("Cape Town Taxis", function(){
   });
 
 
-  // it("should find the lowest number of trips that any taxi in Cape Town made", function() {
-  //
-  //   var min = minimum(capeTownTaxis);
-  //
-  //   assert.equal(min, 9);
-  // });
+  it("should find the records for CA 123 456?", function() {
+
+    var record = records(capeTownTaxis);
+
+    var expectedRecords = [
+      {
+        "RegistrationNumber": "CA 123 456",
+        "Route": "Cape Town - Bellville",
+        "Fare": 13,
+        "Trips": 9
+      },
+      {
+        "RegistrationNumber": "CA 123 456",
+        "Route": "Cape Town - Gugulethu",
+        "Fare": 12,
+        "Trips": 11
+      }
+    ]
+    assert.deepEqual(record, expectedRecords);
+  });
 
 });
