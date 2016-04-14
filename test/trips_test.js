@@ -2,6 +2,10 @@ var assert = require("assert");
 var capeTownTrips = require('../capeTownTrips');
 var minimum = require('../minimum');
 var records = require('../records');
+var tripsMade = require('../tripsMade');
+
+
+
 
 var durbanTaxis = [
   {
@@ -168,4 +172,18 @@ describe("Cape Town Taxis and Durban Taxis", function(){
   });
 
 
+  it("should return trips made by CA 234 567", function() {
+
+    var trip = tripsMade(capeTownTaxis);
+
+    assert.equal(trip, 11);
+  });
+
+  it("should return trips made by ND 234 567", function() {
+
+    var trip = tripsMade(durbanTaxis);
+
+    assert.equal(trip, 36);
+  });
+  
 });
