@@ -1,18 +1,13 @@
-module.exports = function(record){
-
+module.exports = function(record, regNo){
   var records = []
 
   record.forEach(function(allRecords){
-    if (allRecords.RegistrationNumber == "CA 123 456") {
-        var record = allRecords;
-        records.push(record);
+   if(allRecords.RegistrationNumber == regNo) {
+      var record = allRecords;
+     records.push(record);
     };
 
-    if (allRecords.RegistrationNumber == "ND 123 456") {
-        var record = allRecords;
-        records.push(record);
-    };
   });
 
-  return records;
+ return records;
 };

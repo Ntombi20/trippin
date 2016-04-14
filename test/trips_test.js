@@ -3,9 +3,9 @@ var capeTownTrips = require('../capeTownTrips');
 var minimum = require('../minimum');
 var records = require('../records');
 var tripsMade = require('../tripsMade');
-
-
-
+var routes = require('../routes');
+var earn = require('../earn');
+var all_earning = require('../all_earning');
 
 var durbanTaxis = [
   {
@@ -131,7 +131,8 @@ describe("Cape Town Taxis and Durban Taxis", function(){
 
   it("should find the records for CA 123 456", function() {
 
-    var record = records(capeTownTaxis);
+    var regNo = "CA 123 456";
+    var record = records(capeTownTaxis, regNo);
 
     var expectedRecords = [
       {
@@ -152,7 +153,8 @@ describe("Cape Town Taxis and Durban Taxis", function(){
 
   it("should find the records for  ND 123 456", function() {
 
-    var record = records(durbanTaxis);
+    var regNo = "ND 123 456";
+    var record = records(durbanTaxis, regNo);
 
     var expectedRecords = [
       {
@@ -174,16 +176,99 @@ describe("Cape Town Taxis and Durban Taxis", function(){
 
   it("should return trips made by CA 234 567", function() {
 
-    var trip = tripsMade(capeTownTaxis);
+    var regNo = "CA 234 567"
+
+    var trip = tripsMade(capeTownTaxis, regNo);
 
     assert.equal(trip, 11);
   });
 
   it("should return trips made by ND 234 567", function() {
 
-    var trip = tripsMade(durbanTaxis);
+    var regNo = "ND 234 567"
+
+    var trip = tripsMade(durbanTaxis, regNo);
 
     assert.equal(trip, 36);
   });
-  
+
+
+  it("should return the names of all the routes that CA 345 678 took", function() {
+
+    var regNo = "CA 345 678";
+
+    var route = routes(capeTownTaxis, regNo);
+
+    var expectedRoutes = [
+      {
+        "Route": "Cape Town - Langa"
+      },
+      {
+        "Route": "Cape Town - Cape Town"
+      }
+    ];
+
+    assert.deepEqual(route, expectedRoutes);
+  });
+
+  it("should return the names of all the routes that ND 345 678 took", function() {
+
+    var regNo = "ND 345 678"
+
+    var route = routes(durbanTaxis, regNo);
+
+    var expectedRoutes = [
+      {
+        "Route": "Durban - Umbilo"
+      },
+      {
+        "Route": "Durban - University of KZN"
+      },
+      {
+        "Route": "Durban - Umlazi Station"
+      }
+    ];
+
+    assert.deepEqual(route, expectedRoutes);
+  });
+
+
+  it("should return the total earnings for CA 234 567", function() {
+
+    var regNo = "CA 234 567"
+
+    var fare = earn(capeTownTaxis, regNo);
+
+    assert.equal(fare, 132);
+  });
+
+  it("should return the total earnings for ND 234 567", function() {
+
+    var regNo = "ND 234 567"
+
+    var fare = earn(durbanTaxis, regNo);
+
+    assert.equal(fare, 72);
+  });
+
+
+  it("should return the total earnings for the taxis in Cape Town", function() {
+
+  //  var regNo = capeTownTaxis.RegistrationNumber;
+
+    var fare = all_earning(capeTownTaxis);
+
+    assert.equal(fare, 615);
+  });
+
+  it("should return the total earnings for the taxis in Durban", function() {
+
+    //var regNo = durbanTaxis.RegistrationNumber;
+
+    var fare = all_earning(durbanTaxis);
+
+    assert.equal(fare, 1123);
+  });
+
+
 });
