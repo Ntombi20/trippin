@@ -1,11 +1,15 @@
-module.exports = function(capeTownTaxis){
+module.exports = function(record){
 
   var records = []
 
-  capeTownTaxis.forEach(function(allRecords){
+  record.forEach(function(allRecords){
     if (allRecords.RegistrationNumber == "CA 123 456") {
         var record = allRecords;
-
+        records.push(record);
+    };
+    
+    if (allRecords.RegistrationNumber == "ND 123 456") {
+        var record = allRecords;
         records.push(record);
     };
   });

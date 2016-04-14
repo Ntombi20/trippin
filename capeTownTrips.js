@@ -1,9 +1,9 @@
-module.exports = function(capeTownTaxis){
+module.exports = function(capeTrips){
     //trips did all the taxis made...
     var total = 0;
 
-    capeTownTaxis.forEach(function(cape){
-      total = total + cape.Trips;
+    capeTrips.forEach(function(town){
+      total = total + town.Trips;
     });
 
     return total;
