@@ -5,7 +5,6 @@ var allCost = 0;
   fare.forEach(function(moneyMade){
 
         allCost = allCost + moneyMade.Trips * moneyMade.Fare;
-        console.log(moneyMade.Trips * moneyMade.Fare++);
 
 
   })
